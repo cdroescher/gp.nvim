@@ -231,14 +231,9 @@ D.prepare_payload = function(messages, model, provider)
 
 	if model.model == "gpt-5" or  model.model == "gpt-5-mini" then
 		-- remove max_tokens, top_p, temperature for gpt-5 models (duh)
-		output.max_tokens = nil
 		output.temperature = nil
 		output.top_p = nil
-		output.messages = nil
-		output.input = messages
-		output.max_output_tokens = model.max_output_tokens
 		output.stream = false
-		output.max_completion_tokens = nil
 	end
 
 	return output
