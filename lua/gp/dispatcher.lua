@@ -238,6 +238,7 @@ D.prepare_payload = function(messages, model, provider)
 		output.input = messages
 		output.max_output_tokens = model.max_output_tokens
 		output.stream = false
+		output.max_completion_tokens = nil
 	end
 
 	return output
