@@ -73,7 +73,7 @@ D.prepare_payload = function(messages, model, provider)
 	if type(model) == "string" then
 		return {
 			model = model,
-			stream = false,
+			stream = true,
 			messages = messages,
 		}
 	end
@@ -151,7 +151,7 @@ D.prepare_payload = function(messages, model, provider)
 
 		local payload = {
 			model = model.model,
-			stream = false,
+			stream = true,
 			messages = messages,
 			system = system,
 			max_tokens = model.max_tokens or 4096,
@@ -172,7 +172,7 @@ D.prepare_payload = function(messages, model, provider)
 	if provider == "ollama" then
 		local payload = {
 			model = model.model,
-			stream = false,
+			stream = true,
 			messages = messages,
 		}
 
@@ -206,7 +206,7 @@ D.prepare_payload = function(messages, model, provider)
 
 	local output = {
 		model = model.model,
-		stream = false,
+		stream = true,
 		messages = messages,
 		max_completion_tokens = model.max_completion_tokens or 4096,
 		temperature = math.max(0, math.min(2, model.temperature or 1)),
@@ -234,6 +234,8 @@ D.prepare_payload = function(messages, model, provider)
 		output.max_tokens = nil
 		output.temperature = nil
 		output.top_p = nil
+		output.max_output_tokens = model.max_output_tokens
+		output.stream = false
 	end
 
 	return output
