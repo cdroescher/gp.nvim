@@ -234,6 +234,8 @@ D.prepare_payload = function(messages, model, provider)
 		output.max_tokens = nil
 		output.temperature = nil
 		output.top_p = nil
+		output.messages = nil
+		output.input = messages
 		output.max_output_tokens = model.max_output_tokens
 		output.stream = false
 	end
